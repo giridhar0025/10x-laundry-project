@@ -1,0 +1,6 @@
+.center-container {
+    /* border: 1px solid rgb(240, 0, 40); */
+    display: flex;
+    z-index: 1;
+    
+}
