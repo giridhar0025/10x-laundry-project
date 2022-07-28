@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './mainOrdersContainer.css'
-import Navbar from '../navbar/navbar'
+
 
 const MainOrdersContainer = () => {
 
@@ -24,7 +24,7 @@ const MainOrdersContainer = () => {
 
   return (
     <>
-    <Navbar/>
+   
     <div className="ordersContainer">
       <header className="ordersHeader">
         <div className="orders-count-div">
