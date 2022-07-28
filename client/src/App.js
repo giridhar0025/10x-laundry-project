@@ -1,10 +1,18 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Protected from './components/protectedRoutes/protected'
+import MainOrderContainer from './components/main_orders_container/mainOrdersContainer'
+
 
 function App() {
   return (
-    <div className="App">
-      Laundry App Frontend
-    </div>
+     <BrowserRouter>
+     <Routes>
+      {/* After Authentication   */}
+      {/* <Route path="/orders" element={<Protected><MainOrderContainer/></Protected>}></Route> */}
+      <Route path="/orders" element={<MainOrderContainer/>}></Route>
+     </Routes>
+     </BrowserRouter>
   );
 }
 
