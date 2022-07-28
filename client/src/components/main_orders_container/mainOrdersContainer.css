@@ -1,0 +1,83 @@
+.ordersContainer {
+    border: 1px solid black;
+    width: auto;
+    background: #FFFFFF;
+    height: 85vh;
+}
+
+.ordersHeader {
+    border: 1px solid black;
+    height: 24.8px;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: open-sans, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.orders-count-div  {
+    /* border: 1px solid black; */
+    width: 179px;
+    height: 24.8px;
+    display: flex;
+    align-items: center;
+}
+
+.orders-search-div  {
+      border-bottom: 1px solid black;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 20.79px;
+}
+
+.ordersSearch {
+    border: none;
+    /* border-bottom: 1px solid black; */
+}
+
+.noOrders-div {
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      height: 200px;
+      justify-content: center;
+      align-items: center;
+      font-family: open-sans, sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      margin-left: auto;
+      margin-right: auto;
+      
+}
+
+.noOrder-span {
+    border: 1px solid black;
+    color: black;
+    opacity: 0.5;
+    width: auto;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.create-order-btn {
+    width: 107px;
+    height: 32px;
+    border: 1px solid #5861AE;
+    border-radius: 4px;
+    opacity: 1;
+    background-color: #FFFFFF;
+    color: #5861AE;
+}
+
+.create-order-btn:hover {
+    cursor: pointer;
+    background-color: #5861AE;
+    color: #FFFFFF;
+  
+}

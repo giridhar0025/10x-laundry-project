@@ -1,16 +1,18 @@
 import './App.css';
-import Signin from './Components/Signin';
-import Bigfooter from './Components/Bigfooter';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Protected from './components/protectedRoutes/protected'
+import MainOrderContainer from './components/main_orders_container/mainOrdersContainer'
+
 
 function App() {
   return (
-  <>
-    <div className="App">
-      Laundry App Frontend
-    </div>
-    <Signin></Signin>
-    <Bigfooter/>
-    </>
+     <BrowserRouter>
+     <Routes>
+      {/* After Authentication   */}
+      {/* <Route path="/orders" element={<Protected><MainOrderContainer/></Protected>}></Route> */}
+      <Route path="/orders" element={<MainOrderContainer/>}></Route>
+     </Routes>
+     </BrowserRouter>
   );
 }
 
