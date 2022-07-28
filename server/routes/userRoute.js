@@ -33,7 +33,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res)=> {
-    userModel.find({email: req.body.email}).then((userData)=> {
+    userModel.find({email: req.body.user}).then((userData)=> {
         if(userData.length) {
             bcrypt.compare(req.body.password, userData[0].password).then((val)=> {
                 if(val) {
@@ -44,7 +44,20 @@ router.post("/login", (req, res)=> {
                 }
             })
         } else {
-            res.status(400).send("Unauthorized user");
+           userModel.find({phone:req.body.user}).then((userData)=> {
+            if(userData.length) {
+                bcrypt.compare(req.body.password, userData[0].password).then((val)=> {
+                    if(val) {
+                        const authToken = jwt.sign(userData[0].email, process.env.SECRET_KEY);
+                        res.status(200).send({authToken});
+                    } else {
+                        res.status(400).send("Invalid Password");
+                    }
+                })
+            } else {
+               res.status(200).send("No user with given Details")
+            }
+        })
         }
     })
 });
