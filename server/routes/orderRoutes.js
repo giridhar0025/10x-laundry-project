@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
 
 
 router.post('/add', (req, res) => {
-
     var today = new Date()
     var options = {
         day: "numeric",
@@ -62,6 +61,14 @@ router.delete('/cancel/:id', (req, res) => {
             res.status(400).send("No orders")
         }
       
+    }).catch((err) => {
+        res.status(400).send(err)
+    })
+})
+
+router.get('/view/:id', (req, res) => {
+    orderModel.find({ orderId : req.params.id}).then((data) => {
+        res.status(200).send(data)
     }).catch((err) => {
         res.status(400).send(err)
     })
