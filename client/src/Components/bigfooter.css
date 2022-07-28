@@ -1,0 +1,13 @@
+.about-us{
+    top: 967px;
+left: 137px;
+width: 90px;
+height: 25px;
+/* UI Properties */
+text-align: center;
+font: normal normal medium 18px/24px Avenir;
+letter-spacing: 0.18px;
+color: #182838;
+text-transform: uppercase;
+opacity: 1;
+}
