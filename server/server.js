@@ -3,7 +3,7 @@ const mongoose=require("mongoose")
 const productController=require("./routes/productRoute")
 const orderController = require('./routes/orderRoutes')
 const userController=require("./routes/userRoute")
-
+const cors = require('cors');
 
 const app = express()
 require('dotenv').config();
@@ -15,11 +15,12 @@ app.listen(process.env.PORT, (err) => {
     }
 })
 
-// app.use('/', (req, res) => {
-//     res.send("Laundry App Backend")
-// })
+
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
+app.use(cors())
+
+
 app.use("/product",productController)
 
 app.use('/order', orderController)

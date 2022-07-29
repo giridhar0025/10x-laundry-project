@@ -6,9 +6,10 @@ import SmallFooter from '../Footer/smallFooter'
 import './orders.css'
 
 const Orders = () => {
+  
   return (
     <>
-    <Navbar/>
+        <Navbar/>
     <div className="center-container">
        <Sidebar/>
        <MainOrdersContainer/>

@@ -1,11 +1,13 @@
 const orderModel = require('../models/orderModel')
 const express = require('express')
 const router = express.Router() 
-
+const jwt = require('jsonwebtoken')
 
 
 router.get('/', (req, res) => {
-    orderModel.find().then((data) => {
+
+    const user = jwt.verify(req.headers.authorizationtoken, process.env.SECRET_KEY)
+    orderModel.find({ userEmail : user}).then((data) => {
         res.status(200).send({ orders : data})
     }).catch((err) => {
          res.status(400).send(err)
@@ -27,6 +29,7 @@ router.post('/add', (req, res) => {
     var time = today.toLocaleTimeString("en-US", option1)
     const finalDate = sDay + " " + time
 
+    
     orderModel.create({
         userEmail : req.body.userEmail,  
         orderId :req.body.orderId, 
