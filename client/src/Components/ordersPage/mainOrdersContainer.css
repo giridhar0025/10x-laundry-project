@@ -29,7 +29,7 @@
 }
 
 .orders-search-div  {
-    /* border: 1px solid black; */
+    /* border: 1px solid rgb(255, 0, 0); */
     
     display: flex;
     flex-direction: column;
@@ -37,8 +37,9 @@
     width: auto;
     max-height: 80px;
     min-height: 20px;
-    margin-left: 907px;
+    margin-left: 20px;
     margin-bottom: auto;
+    margin-right: 48px;
 }
 
 .orders-search-main-div {
@@ -130,13 +131,14 @@
 .table {
     width: 1293px;
     height: 53px;
-    border: 1px solid #3cff00;
+    /* border: 1px solid #3cff00; */
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
     border-collapse: collapse;
     border-radius: 5px;
     overflow: hidden;
+    border-spacing: 0px;
 }
 
 thead {
@@ -144,3 +146,10 @@ thead {
    
 }
 
+.order-create-btn {
+    /* border: 1px solid black; */
+    margin-right: auto;
+    width: 107px;
+    height: 32px;
+    margin-left: 750px 
+}
