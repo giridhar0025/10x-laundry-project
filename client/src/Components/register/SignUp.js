@@ -2,16 +2,18 @@ import React from 'react'
 import Bigfooter from '../Footer/Bigfooter'
 import SmallFooter from '../Footer/smallFooter'
 import Navbar from '../navbar/navbar'
-import SignInContainer from './SignInContainer'
-const Signin = () => {
+import SignUpContainer from './SignUpContainer'
+
+
+const SignUp = () => {
   return (
     <>
-  <Navbar/>
-    <SignInContainer/>
-    <Bigfooter/> 
-    <SmallFooter/>   
-    </>
+    <Navbar/>
+    <SignUpContainer/>
+    <Bigfooter/>
+    <SmallFooter/>
+</>
   )
 }
 
-export default Signin
+export default SignUp

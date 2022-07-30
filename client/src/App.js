@@ -1,9 +1,15 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Protected from './components/protectedRoutes/protected'
-import Orders from '../src/Components/ordersPage/orders'
-import Signin from '../src/Components/signIn/Signin'
+
+
 import Products from './Components/productsPage/products';
+
+import Orders from './Components/ordersPage/orders'
+import Signin from './Components/signIn/Signin'
+import SignUp from './Components/register/SignUp';
+
+
 
 function App() {
   return (
@@ -14,6 +20,7 @@ function App() {
       <Route path="/orders" element={<Orders/>}></Route>
       <Route path="/user/login" element={<Signin/>}></Route>
       <Route path="/products" element={<Products/>}></Route>
+      <Route path="/user/register" element={<SignUp/>}></Route>
      </Routes>
      </BrowserRouter>
   );
