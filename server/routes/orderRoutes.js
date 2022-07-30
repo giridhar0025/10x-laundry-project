@@ -1,19 +1,30 @@
-const orderModel = require('../models/orderModel')
+const orderModel = require('../models/orderModel');
+const userModel = require("../models/userModel.js")
 const express = require('express')
 const router = express.Router() 
-
+const jwt = require('jsonwebtoken')
 
 
 router.get('/', (req, res) => {
-    orderModel.find().then((data) => {
-        res.status(200).send({ orders : data})
+
+    const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
+    userModel.find({ email : user}).then((data) => {
+        if (data.length) {
+            orderModel.find({ userEmail : user}).then((data) => {
+                res.status(200).send({ orders : data})
+            }).catch((err) => {
+                 res.status(400).send(err)
+            })
+        } 
     }).catch((err) => {
-         res.status(400).send(err)
+        res.status(400).send(err)
     })
+    
 })
 
 
 router.post('/add', (req, res) => {
+   
     var today = new Date()
     var options = {
         day: "numeric",
@@ -27,24 +38,33 @@ router.post('/add', (req, res) => {
     var time = today.toLocaleTimeString("en-US", option1)
     const finalDate = sDay + " " + time
 
-    orderModel.create({
-        userEmail : req.body.userEmail,  
-        orderId :req.body.orderId, 
-        orderTime : finalDate,
-        storeLocation : req.body.storeLocation,
-        storeAddress : req.body.storeAddress,
-        storePhoneNumber :req.body.storePhoneNumber,
-        status : req.body.status,
-        orderDetails :req.body.orderDetails,
-        subTotal : req.body.subTotal,
-        pickupCharges :req.body.pickupCharges,
-        TotalAmount :req.body.TotalAmount,
-        userAddress:req.body.userAddress
-    }).then((data) => {
-        res.status(200).send(data)
+    const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
+    userModel.find({ email : user}).then((data) => {
+        if (data.length) {
+            orderModel.create({
+                userEmail : req.body.userEmail,  
+                orderId :req.body.orderId, 
+                orderTime : finalDate,
+                storeLocation : req.body.storeLocation,
+                storeAddress : req.body.storeAddress,
+                storePhoneNumber :req.body.storePhoneNumber,
+                status : req.body.status,
+                orderDetails :req.body.orderDetails,
+                subTotal : req.body.subTotal,
+                pickupCharges :req.body.pickupCharges,
+                TotalAmount :req.body.TotalAmount,
+                userAddress:req.body.userAddress
+            }).then((data) => {
+                res.status(200).send(data)
+            }).catch((err) => {
+                res.status(400).send(err)
+            })
+        }
+       
     }).catch((err) => {
         res.status(400).send(err)
     })
+    
 })
 
 router.delete('/cancel/:id', (req, res) => {
@@ -52,7 +72,6 @@ router.delete('/cancel/:id', (req, res) => {
     orderModel.find({ orderId : req.params.id}).then((data) => {
         if (data.length) {
             orderModel.deleteOne({ orderId : req.params.id}).then(() => {
-                console.log("entered into delete")
                 res.status(200).send("order deleted successfully")
             }).catch((err) => {
                 res.status(400).send(err)
