@@ -1,8 +1,9 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Protected from './components/protectedRoutes/protected'
-import Orders from './components/ordersPage/orders'
-import Signin from './components/signIn/Signin'
+import Orders from '../src/Components/ordersPage/orders'
+import Signin from '../src/Components/signIn/Signin'
+import Products from './Components/productsPage/products';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       {/* <Route path="/orders" element={<Protected><MainOrderContainer/></Protected>}></Route> */}
       <Route path="/orders" element={<Orders/>}></Route>
       <Route path="/user/login" element={<Signin/>}></Route>
+      <Route path="/products" element={<Products/>}></Route>
      </Routes>
      </BrowserRouter>
   );

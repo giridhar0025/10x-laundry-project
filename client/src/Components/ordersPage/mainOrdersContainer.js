@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./mainOrdersContainer.css";
 import CancelPopup from '../Popups/cancelPopup'
 
 
 const MainOrdersContainer = () => {
+  const navigate = useNavigate()
   const token =
     "eyJhbGciOiJIUzI1NiJ9.cmFodWxAZ21haWwuY29t.jQVg5DcItJ_xFmcuaVXTmf4j5MCFRPhmo1s1gCmqKEs";
 
@@ -42,6 +44,10 @@ const MainOrdersContainer = () => {
  
   }
 
+  const handleNavigate=()=>{
+    navigate("/products")
+  }
+
   return (
     <>
       <div className="ordersContainer">
@@ -52,7 +58,7 @@ const MainOrdersContainer = () => {
           {
             (orderHistory.length !== 0 && (
               <div className="order-create-btn">
-                <button className="create-order-btn">Create</button>
+                <button className="create-order-btn" onClick={handleNavigate}>Create</button>
               </div>
             )) 
           }

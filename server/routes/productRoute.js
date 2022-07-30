@@ -14,10 +14,10 @@ router.post("/add",(req,res)=>{
     })
 })
 router.get("/",(req,res)=>{
+
     productModel.find().then((data)=>{
-        if(data){
-            res.status(200).send(data)
-        }
+        console.log(data)       
+            res.status(200).send({data : data})
     }).catch((err)=>{
         res.status(400).send(err)
     })
