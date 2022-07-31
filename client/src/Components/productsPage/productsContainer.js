@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import "./productContainer.css"
+import ProductComponent from './product-component'
 const ProductsContainer = () => {
 
     const [products, setProducts] = useState([])
-    const [quantity,setQuantity]=useState(null)
-    const [select,setSelect]=useState(false)
-
+let pricesArray=[]
     useEffect(() => {
         fetch("http://localhost:3001/product", {
 
@@ -15,20 +14,32 @@ const ProductsContainer = () => {
                 setProducts(data.data);
             });
     }, []);
-const handleQuantityInput=(e)=>{
-    setQuantity(e.target.value)
+const handlePricesArr=()=>{
+    products.map((item)=>{
+        pricesArray.push(item.washType)
+        return{}
+    })
+    
+
 }
-const handleSelect=(e)=>{
-    console.log(select)
-    if (select===false) {
-       
-        setSelect(true)
-    } else {
-        console.log("entered in true")
-        setSelect(false)
-    }
-   
+handlePricesArr()
+const order = { orderId: "orderId", userId: "userId", details: new Map() };
+let orderedDate = [];
+
+const handleDataSend = (props) => {
+    order.details.set(props.name, props.value);
+    orderedDate = [...order.details].map(([name, value]) => ({
+      name,
+      value,
+    }));
+    console.log("orderedData", orderedDate);
+    return;
 }
+const handleDataSendProceed=()=>{
+console.log(orderedDate)
+}
+// console.log("orderedData", orderedDate);
+
 
 
     return (
@@ -62,42 +73,22 @@ const handleSelect=(e)=>{
                         </thead>
                         {
                             products.map((item, key) => {
+
                                 return (
-                                        <tbody>
-                                            <tr className="t-body-tr">
-                                                <td style={{width: "350px"}} scope="row">
-                                                <div className='product-detail'>
-                                                <img className='product-image' src={item.productImage} alt="" />
-                                                <div className="product-text">
-                                                <span style={{fontSize: "14px"}}>{item.productName}</span>
-                                                <span style={{fontSize: "10px"}}>{item.productDescription}</span>
-                                                </div>
-                                                </div></td>
-                                                <td style={{width: "250px"}}><input className="quantity-input" type="text" onChange={handleQuantityInput}></input></td>
-                                                <td style={{width: "450px"}}>
-                                                    <div className='washType-icons'>
-                                                    {
-                                                       
-                                                    }
-                                                        
-                                                        <img className="wash-icon" src="./Assets/ironing.svg" alt=""/>
-                                                        <img className="wash-icon" src="./Assets/towel.svg" alt=""/>
-                                                        <img className="wash-icon" src="./Assets/bleach.svg" alt=""/>
-                                                    </div>
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                        
-                                        
-                                        
-                                  
+                                    <>
+                                        <ProductComponent  description={item.productDescription} image={item.productImage} name={item.productName} washPrize={pricesArray} handleclick={handleDataSend}/> 
+                                    </>
                                 )
                             })
                         }
 
                     </table>
+                    <div className="product-btns">
+                    <button className='cancel-product'>Cancel</button>
+                        <button onClick={handleDataSendProceed} className='proceed-product'>Proceed</button>
+                    </div>
                 </div>
+
 
             </div>
 
