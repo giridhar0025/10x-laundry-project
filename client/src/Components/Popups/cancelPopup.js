@@ -32,7 +32,7 @@ const CancelPopup = (props) => {
       <Modal.Body>
         <div className="modal-detail-box">
             <div className="alert-caution">
-                <img src='./Assets/red-alert-icon.svg'/>
+                <img  alt=""  src='./Assets/red-alert-icon.svg'/>
             </div>
             <div className="alert-text-btn">
             <span>Are you sure you want to cancel the order No: </span>

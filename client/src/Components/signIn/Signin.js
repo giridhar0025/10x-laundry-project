@@ -3,10 +3,10 @@ import Bigfooter from '../Footer/Bigfooter'
 import SmallFooter from '../Footer/smallFooter'
 import Navbar from '../navbar/navbar'
 import SignInContainer from './SignInContainer'
-const Signin = () => {
+const Signin = (props) => {
   return (
     <>
-  <Navbar/>
+  <Navbar mainData={props.mainData}/>
     <SignInContainer/>
     <Bigfooter/> 
     <SmallFooter/>   
