@@ -178,10 +178,6 @@ text-transform: capitalize;
 opacity: 1;
   }
   .padlock-image-signin{
-    position: absolute;
-    top: 470px;
-    left: 1236px;
-    width: 15px;
-    height: 21px;
+    margin-top: -10px;
     z-index: 8;
   }

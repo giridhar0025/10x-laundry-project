@@ -4,7 +4,7 @@ import './signinmaincontainer.css'
 const SignInContainer = () => {
   return (
     <>
-    <img className='padlock-image-signin' src="/Assets/padlock.svg" alt="show-pass" />
+    
     <div className='signin-maincontainer'>
         <div className='signin-maincontainer-left'>
             <h1 className='signin-maincontainer-laundryheading'>Laundry Service</h1>
@@ -28,6 +28,7 @@ const SignInContainer = () => {
   <input type="text" placeholder="&nbsp;"/>
   <span class="placeholder">Password</span>
 </label>
+<img className='padlock-image-signin' src="/Assets/padlock.svg" alt="show-pass" />
             <p className='signin-forgot-password'>Forget Password?</p>
             <button className='sigin-button'>Sign In</button>
             </form>
