@@ -20,6 +20,8 @@ function App() {
   localStorage.getItem("authorization")
 
 
+
+
   useEffect(() => {
     fetch("http://localhost:3001/user/details", {
       headers: {
@@ -43,9 +45,9 @@ function App() {
       {/* After Authentication   */}
       {/* <Route path="/orders" element={<Protected><MainOrderContainer/></Protected>}></Route> */}
       <Route path="/orders" element={<Orders mainData={mainData}/>}></Route>
-      <Route path="/" element={<Signin/>}></Route>
-      <Route path="/products" element={<Products/>}></Route>
-      <Route path="/user/register" element={<SignUp/>}></Route>
+      <Route path="/" element={<Signin  mainData={mainData}/>}></Route>
+      <Route path="/products" element={<Products  mainData={mainData}/>}></Route>
+      <Route path="/user/register" element={<SignUp  mainData={mainData}/>}></Route>
      </Routes>
      </BrowserRouter>
   );
