@@ -40,6 +40,8 @@
     margin-left: 20px;
     margin-bottom: auto;
     margin-right: 48px;
+    display: block;
+    margin-left: auto;
 }
 
 .order-view-btn {
@@ -165,6 +167,3 @@ thead {
     margin-left: 750px 
 }
 
-.wash-icon {
-    
-}

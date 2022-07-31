@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, useState} from 'react'
 // import Protected from './components/protectedRoutes/protected'
 
 
@@ -12,13 +13,36 @@ import SignUp from './Components/register/SignUp';
 
 
 function App() {
+
+  const [mainData, setMainData] = useState([])
+
+  const token =
+  "eyJhbGciOiJIUzI1NiJ9.cmFodWxAZ21haWwuY29t.jQVg5DcItJ_xFmcuaVXTmf4j5MCFRPhmo1s1gCmqKEs";
+
+
+  useEffect(() => {
+    fetch("http://localhost:3001/", {
+      headers: {
+        authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(...data.orders)
+        setMainData(data);
+      });
+  }, []);
+  
+
+
+
   return (
      <BrowserRouter>
      <Routes>
       {/* After Authentication   */}
       {/* <Route path="/orders" element={<Protected><MainOrderContainer/></Protected>}></Route> */}
       <Route path="/orders" element={<Orders/>}></Route>
-      <Route path="/user/login" element={<Signin/>}></Route>
+      <Route path="/" element={<Signin/>}></Route>
       <Route path="/products" element={<Products/>}></Route>
       <Route path="/user/register" element={<SignUp/>}></Route>
      </Routes>
