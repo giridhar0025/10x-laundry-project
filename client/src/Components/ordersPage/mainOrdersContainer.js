@@ -7,8 +7,9 @@ import Summary from '../Popups/Summary'
 const MainOrdersContainer = () => {
   const navigate = useNavigate()
   const token =
-    "eyJhbGciOiJIUzI1NiJ9.cmFodWxAZ21haWwuY29t.jQVg5DcItJ_xFmcuaVXTmf4j5MCFRPhmo1s1gCmqKEs";
+        localStorage.getItem("authorization")
 
+        console.log(token)
   const [orderHistory, setOrderHistory] = useState([]);
 
   const [filteredSearch, setFilteredSearch] = useState([]);

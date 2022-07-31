@@ -181,3 +181,11 @@ opacity: 1;
     margin-top: -10px;
     z-index: 8;
   }
+  .signin-error{
+    text-decoration: none;
+    color: red;
+    margin-top: 5px;
+    
+    font: normal normal normal 14px/20px Open Sans;
+    letter-spacing: 0.49px;
+  }

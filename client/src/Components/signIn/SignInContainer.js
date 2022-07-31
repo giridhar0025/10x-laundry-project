@@ -8,21 +8,33 @@ import {useNavigate} from 'react-router-dom';
 
 const SignInContainer = () => {
   const history= useNavigate();
+  const [error,setError]=useState(false)
     const handleRoute= ()=>{
-        history.push('/user/register')
+        history("./user/register")
+    }
+    const handleclicklogin= ()=>{
+      history("./orders")
+  }
+    const [passtype,setPasstype]=useState(true)
+    const handlepass=()=>{
+      setPasstype(!passtype)
     }
   const [login, setLogin] = useState({user: "", password: ""})
-    const handleLogin = ()=> {
+    const handleLogin = (e)=> {
+      e.preventDefault();
         axios({
             url: "http://localhost:3001/user/login",
             method: "POST",
             headers: {
             },
-            data: {user: login.userName, password: login.password}
+            data: login
         }).then((loginData)=> {
+          // console.log(loginData)
            localStorage.setItem("authorization", loginData.data.authToken);
+            handleclicklogin()
         }).catch((err)=> {
             console.log(err)
+            setError(true)
         })
     }
   return (
@@ -48,11 +60,12 @@ const SignInContainer = () => {
 <br></br>
 <br></br>
 <label class="custom-field two">
-  <input type="text" placeholder="&nbsp;" onChange={(e)=> {setLogin({...login, password: e.target.value})}}/>
+  <input type={passtype? "password":"text"} placeholder="&nbsp;" onChange={(e)=> {setLogin({...login, password: e.target.value})}}/>
   <span class="placeholder">Password</span>
 </label>
-<img className='padlock-image-signin' src="/Assets/padlock.svg" alt="show-pass" />
+<img onClick={handlepass} className='padlock-image-signin' src="/Assets/padlock.svg" alt="show-pass" />
             <p className='signin-forgot-password'>Forget Password?</p>
+            <p className='signin-error'>{error ? "Invalid Details":""}</p>
             <button className='sigin-button' onClick={handleLogin}>Sign In</button>
             </form>
         </div>
