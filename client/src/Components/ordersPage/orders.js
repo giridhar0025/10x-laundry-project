@@ -5,11 +5,16 @@ import Sidebar from '../sidebar/sidebar'
 import SmallFooter from '../Footer/smallFooter'
 import './orders.css'
 
-const Orders = () => {
+const Orders = (props) => {
+
+  
+
+
+  // console.log(props.mainData.name)
   
   return (
     <>
-        <Navbar/>
+        <Navbar mainData={props.mainData}/>
     <div className="center-container">
        <Sidebar/>
        <MainOrdersContainer/>

@@ -1,0 +1,135 @@
+/* .modal-title-summary {
+    border: 1px solid black;
+}
+
+.modal-content {
+    width: 415px;
+    height: 220px;
+    margin-left: 514px;
+    margin-right:0px;
+    border-radius: none;
+    padding: 0px;
+    float: left;
+    width: 926px;
+    height: 933px;
+    top: 0;
+} */
+
+/* .modal-container {
+    border: 1px solid black;
+    width: 926px;
+    margin-left: 514px;
+} */
+
+
+/* .modal-dialog {
+    width: 926px;
+    margin: 0;
+    background-color: white;
+    height: 930px;
+    margin-left: 514px;
+} */
+
+/* .modal-content {
+    width: 926px;
+    height: 933px;
+}
+
+.modal-body {
+    height: 936px;
+} */
+
+.custom-modal {
+    border: 1px solid black;
+    width: 926px;
+    margin-left: 514px;
+}
+
+.custom-modal .modal-dialog {
+  background-color: rgb(255, 255, 255);
+   width: 100%;
+    height: 930px;
+    margin: 0px;
+}
+
+.custom-modal .modal-dialog .modal-content  {
+    background-color: rgb(255, 255, 255);
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+
+.summary-container {
+    border: 1px solid rgb(255, 0, 0);
+   height: auto;
+}
+
+.summary-container .modal-body {
+    padding: 0px;
+}
+
+.modal-summary-location {
+    height: 120px;
+    background-color: #F4F9FF;
+}
+
+.order-summary-status {
+    height: 96px;
+    border-bottom: 1px solid black;
+}
+
+@media (min-width: 576px) {
+.custom-modal .modal-dialog {
+    max-width: 926px;
+
+}
+}
+
+
+.modal-title-summary {
+    height : 70px;
+    font-size: 22px;
+}
+
+.modal-summary-span {
+    font-size: 22px;
+    margin-left: 20px;
+}
+
+.summary-span-icon {
+    border: 1px solid black;
+    margin-left: 900px;
+}
+
+/* .modal-container {
+    background-color: rgb(184, 107, 177);
+    width: 926px;
+    height: 930px;
+    margin: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+} */
+
+/* .modal-title-summary {
+    border: 1px solid black;
+    margin-top: 0px;
+} */
+
+.order-summary-details {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 350px;
+}
+
+.order-summary-address-con {
+    border: 1px solid black;
+    height: 200px
+}
+
+.order-summary-bottom-div {
+    border: 1px solid black;
+    height: 90px;
+    background-color: #F4F4F4;
+    box-shadow: 0px -3px 6px #00000015;
+}
