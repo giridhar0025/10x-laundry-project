@@ -5,10 +5,10 @@ import Navbar from '../navbar/navbar'
 import SignUpContainer from './SignUpContainer'
 
 
-const SignUp = () => {
+const SignUp = (props) => {
   return (
     <>
-    <Navbar/>
+    <Navbar mainData={props.mainData}/>
     <SignUpContainer/>
     <Bigfooter/>
     <SmallFooter/>
