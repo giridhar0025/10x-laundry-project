@@ -1,15 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './summaryStyles.css'
-import styled from 'styled-components'
-
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 const Summary = (props) => {
-    const [modalShow, setModalShow] = useState(false);
 
+
+
+   let orderData = props.orderData
+  
 
   return (
+
+
+
 
 
     <>
@@ -35,49 +40,69 @@ const Summary = (props) => {
       <Modal.Body>
           <div>
             <div className="modal-summary-location">
-
+                <div>
+                  <span style={{fontSize:"16px"}}>Store Location</span>
+                  <span>{orderData.storeLocation}</span>
+                </div>
+                <div>
+                <span style={{fontSize:"16px"}}>Store Address</span>
+                  <span>{orderData.storeAddress}</span>
+                </div>
+                <div>
+                <span style={{fontSize:"16px"}}>Store Phone</span>
+                  <span>{orderData.storePhoneNumber}</span>
+                </div>
             </div>
             <div className="order-summary-status">
-                
+            <ProgressBar animated now={45} />
+            <span>{orderData.orderTime}</span>
             </div>
             <div className="order-summary-details">
               <span>
-                Order Details
+                Order Details :  {orderData.orderId}
               </span>
               <div>
-                
+              <table>
+                  <tbody>
+                      <tr>
+                          <th scope="row">Shirts</th>
+                          <td>Washing, ironing</td>
+                          <td>5 x 20 = 100</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">Jeans</th>
+                          <td>Washing, ironing</td>
+                          <td>5 x 30 = 150</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">Joggers</th>
+                          <td>Chemical Wash</td>
+                          <td>1 x 100 = 200</td>
+                      </tr>
+                  </tbody>
+                  <div>Sub Total: {orderData.subTotal}</div>
+                  <div>Pickup Charges: {orderData.pickupCharges}</div>
+                  <div>Total: {orderData.TotalAmount}</div>
+              </table>
               </div>
             </div>
            <div className="order-summary-address-con">
             <span>Address</span>
             <div className="Address-div">
-
+                <div>{orderData.userAddress}</div>
             </div>
            </div>
            <div className="order-summary-bottom-div">
              
            </div>
           </div>
-
-          
       </Modal.Body>
       </div>
       </div>
     </Modal>
-
-  
-      
     </>
   )
 }
 
 export default Summary
 
-
-const modalDialog = styled.div`
-width: 926px;
-margin: 0;
-background-color: white;
-height: 930px;
-margin-left: 514px;
-`

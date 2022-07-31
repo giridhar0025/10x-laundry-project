@@ -8,9 +8,6 @@ import './orders.css'
 const Orders = (props) => {
 
   
-
-
-  // console.log(props.mainData.name)
   
   return (
     <>

@@ -6,10 +6,14 @@ import Navbaruser from '../navbar/navbaruser'
 import SignUpContainer from './SignUpContainer'
 
 
-const SignUp = () => {
+const SignUp = (props) => {
   return (
     <>
+<<<<<<< HEAD
     <Navbaruser/>
+=======
+    <Navbar mainData={props.mainData}/>
+>>>>>>> 14c30eb54c4f49e00592fa281e8e91e117858324
     <SignUpContainer/>
     <Bigfooter/>
     <SmallFooter/>
