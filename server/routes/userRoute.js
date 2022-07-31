@@ -61,7 +61,12 @@ router.post("/login", (req, res)=> {
         }
     })
 });
-
+router.get("/details",(req,res)=>{
+    const email=jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
+    userModel.find({email:email}).then((data)=>{
+        res.status(200).send(data[0])
+    })
+})
 
 
 module.exports = router
