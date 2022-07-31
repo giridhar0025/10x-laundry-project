@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./mainOrdersContainer.css";
-import CancelPopup from '../Popups/cancelPopup'
-import Summary from '../Popups/Summary'
+import CancelPopup from '../Popups/cancelPopup';
+import Summary from '../Popups/Summary';
 
 const MainOrdersContainer = () => {
   const navigate = useNavigate()
@@ -126,7 +126,7 @@ const MainOrdersContainer = () => {
                         </svg>
                       </button>
                       <Summary  show={summaryModal} onHide={() => setSummaryModal(false)} />
-                      
+                      {/* <SummaryPopup  show={summaryModal} onHide={() => setSummaryModal(false)} /> */}
                     </td>
                   </tr>
                 </tbody>

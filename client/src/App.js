@@ -21,17 +21,18 @@ function App() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3001/", {
+    fetch("http://localhost:3001/user/details", {
       headers: {
         authorization: token,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(...data.orders)
         setMainData(data);
       });
   }, []);
+
+  // console.log(mainData);
   
 
 
@@ -41,7 +42,7 @@ function App() {
      <Routes>
       {/* After Authentication   */}
       {/* <Route path="/orders" element={<Protected><MainOrderContainer/></Protected>}></Route> */}
-      <Route path="/orders" element={<Orders/>}></Route>
+      <Route path="/orders" element={<Orders mainData={mainData}/>}></Route>
       <Route path="/" element={<Signin/>}></Route>
       <Route path="/products" element={<Products/>}></Route>
       <Route path="/user/register" element={<SignUp/>}></Route>
