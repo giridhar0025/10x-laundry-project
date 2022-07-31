@@ -33,6 +33,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res)=> {
+    console.log(req.body)
     userModel.find({email: req.body.user}).then((userData)=> {
         if(userData.length) {
             bcrypt.compare(req.body.password, userData[0].password).then((val)=> {
@@ -55,7 +56,7 @@ router.post("/login", (req, res)=> {
                     }
                 })
             } else {
-               res.status(200).send("No user with given Details")
+               res.status(400).send("No user with given Details")
             }
         })
         }

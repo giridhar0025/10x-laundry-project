@@ -85,7 +85,7 @@ input.register-checkbox{
 }
 .register-agree{
     text-align: center;
-text-decoration: underline;
+
 font: normal normal normal 14px/20px Open Sans;
 letter-spacing: 0.49px;
 color: #5861AE;
@@ -175,4 +175,8 @@ opacity: 1;
   .custom-field.two input:focus {
     background-size: 100% 0.15em, 100% 0.1em, 100%;
   }
- 
+ #signup-error{
+    text-decoration: none;
+    color: red;
+    margin-top: 5px;
+ }
