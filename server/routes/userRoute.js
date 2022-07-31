@@ -67,5 +67,8 @@ router.get("/details",(req,res)=>{
         res.status(200).send(data[0])
     })
 })
+router.post("/logout", (req, res)=> {
+    res.status(200).send("logout works");
+});
 
 module.exports = router
