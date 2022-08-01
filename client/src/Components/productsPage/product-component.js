@@ -38,7 +38,7 @@ const ProductComponent = (props) => {
         
         if(wash){
             // console.log(quantity)
-            console.log("Entered in wash")
+            // console.log("Entered in wash")
             // console.log(arr[0][0])
             
             cost+=(parseInt(quantity)*parseInt(arr[0][0]))
@@ -46,25 +46,25 @@ const ProductComponent = (props) => {
         }
       
         if(iron){
-            console.log("Entered in iron")
+            // console.log("Entered in iron")
             cost+=(quantity*parseInt(arr[0][1]))
             
         }
         if(towel){
             // console.log(arr[0][3])
-            console.log("Entered in towel")
+            // console.log("Entered in towel")
             cost+=(quantity*parseInt(arr[0][2]))
           
         }
         if(bleach){
             //  console.log(arr[0][3])
-            console.log("Entered in bleach")
+            // console.log("Entered in bleach")
             cost+=(parseInt(quantity)*parseInt(arr[0][3]))
            
         }
        
         setPrize(cost)
-        console.log(cost)
+        // console.log(cost)
     }
     useEffect(()=>{
           prizeCalculation()
@@ -103,25 +103,23 @@ const ProductComponent = (props) => {
     }
 
     const handleQuantity=(value)=>{
-        console.log(quantity)
-        setQuantity(value)
-        
-        // prizeCalculation()
-        
+        // console.log(quantity)
+        setQuantity(value)   
+        // prizeCalculation()   
     }
 
     return (
         <>
             <tbody>
                 <tr className="t-body-tr">
-                    <td style={{ width: "350px" }} scope="row">
+                    <th style={{ width: "350px" }} scope="row">
                         <div className='product-detail'>
                             <img className='product-image'  src={props.image} alt="" />
                             <div className="product-text">
                                 <span style={{ fontSize: "14px" }}>{props.name}</span>
                                 <span style={{ fontSize: "10px" }}>{props.description}</span>
                             </div>
-                        </div></td>
+                        </div></th>
                         <td>
                             <input type="text" name="quantity"  className='quantity-input' value={quantity} onChange={(e)=>handleQuantity(e.target.value)}></input>
                         </td>

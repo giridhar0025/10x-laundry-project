@@ -5,6 +5,7 @@ import CancelPopup from '../Popups/cancelPopup';
 import Summary from '../Popups/Summary';
 
 const MainOrdersContainer = () => {
+  
 
   const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ const MainOrdersContainer = () => {
         // console.log(...data.orders)
         setOrderHistory(data.orders);
       });
-  }, []);
+  }, [token]);
 
 
   const handleFilter = (e) => {
@@ -72,7 +73,7 @@ const MainOrdersContainer = () => {
   }
 
   const handleOrderCancel = (item) => {
-    
+    console.log("entered in handle")
     setCancelOrderData(item)
   }
 
@@ -162,7 +163,7 @@ const MainOrdersContainer = () => {
         ) : (
           <div className="noOrders-div">
             <span className="noOrder-span">No Orders available</span>
-            <button className="create-order-btn">Create</button>
+            <button onClick={handleNavigate} className="create-order-btn" >Create</button>
           </div>
         )}
       </div>

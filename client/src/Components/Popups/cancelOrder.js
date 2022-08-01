@@ -10,12 +10,10 @@ const CancelOrder = (props) => {
 
     console.log(props.maincanceldata.orderId)
 
-    const [modalShow, setModalShow] = React.useState(false);
 
 
     const handleOrderPost = () => {
-    //     // console.log(props)
-
+  
         const authorization = localStorage.getItem("authorization")
     fetch(`http://localhost:3001/order/cancel/${props.maincanceldata.orderId}`, {
       method: "DELETE",

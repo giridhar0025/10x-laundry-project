@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import "./productContainer.css"
 import ProductComponent from './product-component'
+import OrderSummary from './orderSummary'
+
+
+
 const ProductsContainer = () => {
+
+    const [summaryModal, setSummaryModal] = useState(false);
 
     const [products, setProducts] = useState([])
 let pricesArray=[]
@@ -32,11 +38,11 @@ const handleDataSend = (props) => {
       name,
       value,
     }));
-    console.log("orderedData", orderedDate);
+    // console.log("orderedData", orderedDate);
     return;
 }
 const handleDataSendProceed=()=>{
-console.log(orderedDate)
+// console.log(orderedDate)
 }
 // console.log("orderedData", orderedDate);
 
@@ -77,7 +83,7 @@ console.log(orderedDate)
 
                                 return (
                                     <>
-                                        <ProductComponent  description={item.productDescription} image={item.productImage} name={item.productName} washPrize={pricesArray} handleclick={handleDataSend}/> 
+                                      <ProductComponent  description={item.productDescription} image={item.productImage} name={item.productName} washPrize={pricesArray} handleclick={handleDataSend}/> 
                                     </>
                                 )
                             })
@@ -86,7 +92,8 @@ console.log(orderedDate)
                     </table>
                     <div className="product-btns">
                     <button className='cancel-product'>Cancel</button>
-                        <button onClick={handleDataSendProceed} className='proceed-product'>Proceed</button>
+                        <button  onClick={() => setSummaryModal(true)}  className='proceed-product'><div onClick={handleDataSendProceed}>Proceed</div></button>
+                        <OrderSummary show={summaryModal} onHide={() => setSummaryModal(false)} />
                     </div>
                 </div>
 

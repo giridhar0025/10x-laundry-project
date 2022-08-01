@@ -7,7 +7,12 @@ import './orders.css'
 
 const Orders = (props) => {
 
-  
+  const handleReload = () => {
+    window.location.reload(false); 
+    handleReload();
+  }
+
+  // window.location.reload(false); 
   
   return (
     <>
