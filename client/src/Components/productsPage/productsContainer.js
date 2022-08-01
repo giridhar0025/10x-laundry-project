@@ -69,6 +69,7 @@ console.log(orderedDate)
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Wash Type</th>
                                 <th scope="col">Price</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         {

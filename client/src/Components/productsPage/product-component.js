@@ -8,7 +8,9 @@ import washingMachine1 from "./washing-machine-blue.svg"
 import washingMachine from "./washing-machine.svg"
 import bleach1 from "./bleach -blue.svg"
 import bleachs from "./bleach.svg"
+
 const ProductComponent = (props) => {
+
     const [wash, setWash] = useState(false)
     const [bleach, setBleach] = useState(false)
     const [towel, setTowel] = useState(false)
@@ -16,34 +18,49 @@ const ProductComponent = (props) => {
     const [quantity,setQuantity]=useState(null)
     const [prize,setPrize]=useState('-')
     const arr=props.washPrize
+
+    // const [washprice,setwashprice]=useState(0)
+    
+
+    const handleReset=()=>{
+        
+        setIron(false)
+        setBleach(false)
+        setTowel(false)
+        setPrize('-')
+        setWash(false)
+        setQuantity('')
+    }
     
     const prizeCalculation=()=>{
         let cost=0
+        
         
         if(wash){
             // console.log(quantity)
             console.log("Entered in wash")
             // console.log(arr[0][0])
-            cost+=(parseInt(quantity)*parseInt(arr[0][0]))
             
+            cost+=(parseInt(quantity)*parseInt(arr[0][0]))
+           
         }
       
         if(iron){
             console.log("Entered in iron")
             cost+=(quantity*parseInt(arr[0][1]))
-
+            
         }
         if(towel){
             // console.log(arr[0][3])
             console.log("Entered in towel")
             cost+=(quantity*parseInt(arr[0][2]))
-            
+          
         }
         if(bleach){
             //  console.log(arr[0][3])
             console.log("Entered in bleach")
             cost+=(parseInt(quantity)*parseInt(arr[0][3]))
-            
+           
         }
        
         setPrize(cost)
@@ -66,19 +83,23 @@ const ProductComponent = (props) => {
     })
     const handleWash = () => {
         setWash(!wash)
+        
         // prizeCalculation()
     }
     const handleBleach = () => {
         setBleach(!bleach)
-        // prizeCalculation()
+        // prizeCalculation()  
+        
     }
     const handleTowel = () => {
         setTowel(!towel)
         // prizeCalculation()
+        
     }
     const handleIron = () => {
         setIron(!iron)
         // prizeCalculation()
+        
     }
 
     const handleQuantity=(value)=>{
@@ -114,9 +135,13 @@ const ProductComponent = (props) => {
                                                     </div>
                                                 </td>
                     <td className='Price-product'>
-                        <p className='product-price-p'>{prize}</p>
+                        <p className='product-price-p'>{quantity} X {washprice} = {prize}</p>
+                    </td>
+                    <td>
+                        <button className='product-reset' onClick={handleReset}>Reset</button>
                     </td>
                 </tr>
+                
             </tbody>
         </>
     )
