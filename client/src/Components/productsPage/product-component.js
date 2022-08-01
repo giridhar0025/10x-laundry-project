@@ -135,7 +135,7 @@ const ProductComponent = (props) => {
                                                     </div>
                                                 </td>
                     <td className='Price-product'>
-                        <p className='product-price-p'>{quantity} X {washprice} = {prize}</p>
+                        <p className='product-price-p'> {prize}</p>
                     </td>
                     <td>
                         <button className='product-reset' onClick={handleReset}>Reset</button>
