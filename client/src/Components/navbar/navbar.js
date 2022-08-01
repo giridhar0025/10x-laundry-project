@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 const Navbar = (props) => {
 
   const navigate = useNavigate();
+  
   const handleLogout = ()=> {
     localStorage.setItem("authorization", "");
     navigate("/");

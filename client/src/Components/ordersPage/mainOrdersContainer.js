@@ -20,6 +20,8 @@ const MainOrdersContainer = () => {
 
   const [viewOrderData, setViewOrderData] = useState([]);
 
+  const [cancelOrderData, setCancelOrderData] = useState([]);
+
 
 
   if (token === null) {
@@ -64,8 +66,14 @@ const MainOrdersContainer = () => {
   }
 
   const handleOrderView = (item) => {
+    
     setViewOrderData(item)
-     console.log(item)
+    
+  }
+
+  const handleOrderCancel = (item) => {
+    
+    setCancelOrderData(item)
   }
 
   return (
@@ -133,8 +141,8 @@ const MainOrdersContainer = () => {
                     <td>{item.TotalAmount}</td>
                     <td>{item.status}</td>
                     <td>
-                      <button onClick={() => setModalShow(true)} class="order-history-cancel">Cancel Order</button>
-                      <CancelPopup show={modalShow} onHide={() => setModalShow(false)} />
+                      <button onClick={() => setModalShow(true)} class="order-history-cancel"><div onClick={() => handleOrderCancel(item)}>Cancel Order</div></button>
+                      <CancelPopup show={modalShow} cancelOrderData={cancelOrderData} onHide={() => setModalShow(false)} />
                     </td>
                     <td>
                       <button onClick={() => setSummaryModal(true)}  className="order-view-btn">
