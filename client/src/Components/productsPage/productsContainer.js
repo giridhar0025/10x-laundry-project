@@ -5,11 +5,16 @@ import OrderSummary from './orderSummary'
 
 
 
-const ProductsContainer = () => {
+const ProductsContainer = (props) => {
 
     const [summaryModal, setSummaryModal] = useState(false);
 
+    // const [makeOrder, setMakeOrder] = useState([]);
+
+    console.log(props.mainData)
+
     const [products, setProducts] = useState([])
+    const [ordereddata, setordereddata] = useState([])
 let pricesArray=[]
     useEffect(() => {
         fetch("http://localhost:3001/product", {
@@ -38,14 +43,27 @@ const handleDataSend = (props) => {
       name,
       value,
     }));
+   
     // console.log("orderedData", orderedDate);
+ 
+    
     return;
 }
+
+// useEffect(() => {
+//     setordereddata(orderedDate)
+// })
+
+
 const handleDataSendProceed=()=>{
+    setordereddata(orderedDate)
 // console.log(orderedDate)
 }
-// console.log("orderedData", orderedDate);
 
+
+console.log(ordereddata)
+
+ 
 
 
     return (
@@ -92,8 +110,9 @@ const handleDataSendProceed=()=>{
                     </table>
                     <div className="product-btns">
                     <button className='cancel-product'>Cancel</button>
-                        <button  onClick={() => setSummaryModal(true)}  className='proceed-product'><div onClick={handleDataSendProceed}>Proceed</div></button>
-                        <OrderSummary show={summaryModal} onHide={() => setSummaryModal(false)} />
+                    {/* <div onClick={() => handleDataSendProceed()}>Proceed</div> */}
+                        <button  onClick={() => setSummaryModal(true)}  className='proceed-product'><div onClick={() => handleDataSendProceed()}>Proceed</div></button>
+                        <OrderSummary ordereddata={ordereddata} userDetails={props.mainData} show={summaryModal}  onHide={() => setSummaryModal(false)} />
                     </div>
                 </div>
 

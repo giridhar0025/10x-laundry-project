@@ -1,9 +1,103 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import {useNavigate} from 'react-router-dom'
 
 
 const OrderSummary = (props) => {
+
+
+  console.log(props.userDetails)
+
+  const Navigate = useNavigate()
+
+
+  const token = localStorage.getItem("authorization");
+  const OrderMainData = props.ordereddata;
+  // console.log(OrderMainData)
+
+  var RandomId = Math.floor(1000 + Math.random() * 9000);
+
+
+  const StoreLocationData = {
+       "storeLocation" : "Pune",
+       "storeAddress" : "3471, Subzi Market, Hauz Quazi",
+       "PhoneNumber" : 9876543212
+    }
+  
+    let subtotalNumber = 0
+    const SubTotalLogic = () => {
+      OrderMainData.map((item) => {
+         subtotalNumber = item.value.price + subtotalNumber
+        
+      })
+      // console.log(subtotalNumber)
+    }
+    SubTotalLogic()
+
+    const TotalPrice = subtotalNumber + 50
+
+    // console.log(subtotalNumber)
+
+
+
+//   const [OrderDataSend, setOrderDataSend] = useState({
+//     userEmail: "",
+//     orderId: "",
+//     orderTime: "",
+//     storeLocation: "",
+//     storeAddress: "",
+//     storePhoneNumber: "",
+//     status: "",
+//     orderDetails: [], 
+//     subTotal: "",
+//     pickupCharges: "",
+//     TotalAmount: "",
+//     userAddress: "",
+// })
+
+if (token === null) {
+  localStorage.setItem("authorization", "")
+} else if (token.length > 0) {
+  
+}
+
+
+const OrderMainDetails = {
+    
+}
+
+const handleCreateOrder = () => {
+   fetch("http://localhost:3001/order/add", {
+     method: "POST",
+     body : JSON.stringify({
+          userEmail: props.userDetails.email,
+          orderId: RandomId,
+          storeLocation: StoreLocationData.storeAddress,
+          storeAddress: StoreLocationData.storeAddress,
+          storePhoneNumber: StoreLocationData.PhoneNumber,
+          status: "Ready to Pick up",
+          orderDetails: OrderMainData, 
+          subTotal: subtotalNumber,
+          pickupCharges: 50,
+          TotalAmount: TotalPrice,
+          userAddress: props.userDetails.address,
+     }),
+     headers : {
+      authorization: token,
+      "Content-Type": "application/json"
+     },
+   }).then((res) => {
+    console.log(res)
+
+   }).catch((err) => {
+    console.log(err)
+   })
+   Navigate('/orders')
+   
+
+}
+
   return (
     <>
          <Modal
@@ -29,58 +123,64 @@ const OrderSummary = (props) => {
             <div className="modal-summary-location">
                 <div className="modal-summary-internal-div">
                   <span style={{fontSize:"16px", fontWeight:"bold"}}>Store Location</span>
-                  <span>{}</span>
+                  <span>{StoreLocationData.storeAddress}</span>
                 </div>
                 <div className="modal-summary-internal-div">
                 <span style={{fontSize:"16px", fontWeight:"bold"}}>Store Address</span>
-                  <span>{}</span>
+                  <span>{StoreLocationData.storeAddress}</span>
                 </div>
                 <div className="modal-summary-internal-div">
                 <span style={{fontSize:"16px", fontWeight:"bold"}}>Store Phone</span>
-                  <span>{}</span>
+                  <span>{StoreLocationData.PhoneNumber}</span>
                 </div>
             </div>
             
             <div className="order-summary-details">
               <span  style={{fontSize:"16px", fontWeight:"bold", marginTop: "30px" , marginLeft : "10px", display: "block"}}>
-                Order Details :  {}
+                Order Details :  {RandomId}
               </span>
               <div>
               <table className="order-view-table">
                   <tbody>
-                      <tr style={{borderBottom: "1px solid #e9e9e9"}}>
-                          <th scope="row">Shirts</th>
-                          <td>Washing, ironing</td>
-                          <td>5 x 20 = 100</td>
+                  {OrderMainData.map((item)=>{
+                        if(item.value.quantity>0){
+                            return(
+                            <>
+                            <tr>
+                          <th scope="row">{item.name}</th>
+                          {[
+                            item.value.wash ? "Washing" : "",
+                            item.value.iron ? "Ironing" : "",
+                            item.value.towel ? "DryWash" : "",
+                            item.value.bleach ? "Bleach" : "",
+                          ]
+                            .filter((x) => x.length > 0)
+                            .join(",")}
+                          <td>{item.value.price}</td>
                       </tr>
-                      <tr style={{borderBottom: "1px solid #e9e9e9"}}>
-                      <th scope="row">Jeans</th>
-                          <td>Washing, ironing</td>
-                          <td>5 x 30 = 150</td>
-                      </tr>
-                      <tr style={{borderBottom: "1px solid #e9e9e9"}}>
-                      <th scope="row">Joggers</th>
-                          <td>Chemical Wash</td>
-                          <td>1 x 100 = 200</td>
-                      </tr>
+                      </>
+                            )
+                          }
+                        }
+                     )}
                   </tbody>
                   
               </table>
               <div className="order-view-charges-div">
-              <div style={{fontWeight: 'bold', fontSize: '15px'}} className="order-view-subTotal">Sub Total: {}</div>
-              <div style={{fontWeight: 'bold', fontSize: '15px'}} className="order-view-pickupCharges">Pickup Charges: {}</div>
-              <div  className="order-view-total"><span style={{marginRight : "120px"}}>Total: {}</span></div>
+              <div style={{fontWeight: 'bold', fontSize: '15px'}} className="order-view-subTotal">Sub Total: {subtotalNumber}</div>
+              <div style={{fontWeight: 'bold', fontSize: '15px'}} className="order-view-pickupCharges">Pickup Charges: 50</div>
+              <div  className="order-view-total"><span style={{marginRight : "120px"}}>Total: {TotalPrice}</span></div>
               </div>
                </div>
             </div>
            <div className="order-summary-address-con">
             <span style={{fontSize:"16px", fontWeight:"bold", marginLeft:"20px", marginTop:"10px", display: 'block'}}>Address</span>
             <div className="Address-div">
-                <div>{}</div>
+                <div>{props.userDetails.address}</div>
             </div>
            </div>
            <div className="order-summary-bottom-div">
-             
+             <button onClick={handleCreateOrder} className="create-order-btn">Create</button>
            </div>
           </div>
       </Modal.Body>
