@@ -16,8 +16,15 @@ function App() {
 
   const [mainData, setMainData] = useState([])
 
-  const token =
+  
+  let token =
   localStorage.getItem("authorization")
+
+  if(token === null) {
+    localStorage.setItem("authorization", "")
+  } else{
+    token = token
+  }
 
 
 
