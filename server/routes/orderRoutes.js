@@ -4,7 +4,6 @@ const express = require('express')
 const router = express.Router() 
 const jwt = require('jsonwebtoken')
 
-
 router.get('/', (req, res) => {
 
     const user = jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
@@ -24,7 +23,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/add', (req, res) => {
-   
+    console.log(req.body)
     var today = new Date()
     var options = {
         day: "numeric",
@@ -55,7 +54,7 @@ router.post('/add', (req, res) => {
                 TotalAmount :req.body.TotalAmount,
                 userAddress:req.body.userAddress
             }).then((data) => {
-                res.status(200).send(data)
+                res.status(200).send("data added succesfully")
             }).catch((err) => {
                 res.status(400).send(err)
             })

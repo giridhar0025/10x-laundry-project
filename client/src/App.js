@@ -32,7 +32,7 @@ function App() {
       .then((data) => {
         setMainData(data);
       });
-  }, []);
+  }, [token]);
 
   // console.log(mainData);
   

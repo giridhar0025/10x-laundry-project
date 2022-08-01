@@ -6,20 +6,25 @@ import CancelOrder from './cancelOrder'
 
 const CancelPopup = (props) => {
 
+//   console.log(props)
 
-  let orderData = props.cancelOrderData
 
-  // console.log(orderData)
+  let orderdata = props.cancelOrderData
 
-  const [maincanceldata, setMainCancelData] = useState([]);
+//   console.log(orderdata)
 
 
     const [modalShow, setModalShow] = useState(false);
 
-    const handleOrderCancelSend = (orderData) => {
-      setMainCancelData(orderData)
-      //  console.log(orderData)
-    }
+    // const handleOrderCancelSend = (orderData) => {
+    //   setMainCancelData(orderData)
+    //   //  console.log(orderData)
+    // }
+
+
+    let CancelProductData = props.cancelOrderData.orderDetails
+
+  
 
 
 
@@ -47,10 +52,10 @@ const CancelPopup = (props) => {
                 <img  alt=""  src='./Assets/red-alert-icon.svg'/>
             </div>
             <div className="alert-text-btn">
-            <span>Are you sure you want to cancel the order No: {orderData.orderId}</span>
+            <span>Are you sure you want to cancel the order No: {orderdata.orderId}</span>
             <br></br>
-            <button onClick={() => setModalShow(true)}  className="cancel-proceed-btn"><div onClick={() => handleOrderCancelSend(orderData)}>Proceed</div></button>
-            <CancelOrder show={modalShow} maincanceldata={maincanceldata} onHide={() => setModalShow(false)} />
+            <button onClick={() => setModalShow(true)}  className="cancel-proceed-btn"><div>Proceed</div></button>
+            <CancelOrder mainData={props.mainData} show={modalShow} orderdata={orderdata}  onHide={() => setModalShow(false)} />
             </div>
         </div>
       </Modal.Body>

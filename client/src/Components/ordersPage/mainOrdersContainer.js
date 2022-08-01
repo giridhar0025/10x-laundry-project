@@ -4,7 +4,12 @@ import "./mainOrdersContainer.css";
 import CancelPopup from '../Popups/cancelPopup';
 import Summary from '../Popups/Summary';
 
-const MainOrdersContainer = () => {
+const MainOrdersContainer = (props) => {
+
+  // console.log(props)
+
+ 
+  
 
   const navigate = useNavigate();
 
@@ -43,7 +48,7 @@ const MainOrdersContainer = () => {
         // console.log(...data.orders)
         setOrderHistory(data.orders);
       });
-  }, []);
+  }, [token]);
 
 
   const handleFilter = (e) => {
@@ -72,9 +77,12 @@ const MainOrdersContainer = () => {
   }
 
   const handleOrderCancel = (item) => {
-    
+    console.log("entered in handle")
     setCancelOrderData(item)
   }
+
+
+  console.log(cancelOrderData)
 
   return (
     <>
@@ -142,7 +150,7 @@ const MainOrdersContainer = () => {
                     <td>{item.status}</td>
                     <td>
                       <button onClick={() => setModalShow(true)} class="order-history-cancel"><div onClick={() => handleOrderCancel(item)}>Cancel Order</div></button>
-                      <CancelPopup show={modalShow} cancelOrderData={cancelOrderData} onHide={() => setModalShow(false)} />
+                      <CancelPopup mainData={props.mainData} show={modalShow} cancelOrderData={cancelOrderData} onHide={() => setModalShow(false)} />
                     </td>
                     <td>
                       <button onClick={() => setSummaryModal(true)}  className="order-view-btn">
@@ -151,7 +159,7 @@ const MainOrdersContainer = () => {
                             <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                         </svg>
                       </button>
-                      <Summary show={summaryModal} orderData={viewOrderData} onHide={() => setSummaryModal(false)} />
+                      <Summary mainUserData={props.mainData} show={summaryModal} orderData={viewOrderData} onHide={() => setSummaryModal(false)} />
                       {/* <SummaryPopup  show={summaryModal} onHide={() => setSummaryModal(false)} /> */}
                     </td>
                   </tr>
@@ -162,7 +170,7 @@ const MainOrdersContainer = () => {
         ) : (
           <div className="noOrders-div">
             <span className="noOrder-span">No Orders available</span>
-            <button className="create-order-btn">Create</button>
+            <button onClick={handleNavigate} className="create-order-btn" >Create</button>
           </div>
         )}
       </div>

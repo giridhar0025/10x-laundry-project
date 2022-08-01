@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './summaryStyles.css'
@@ -6,17 +6,102 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 const Summary = (props) => {
 
-  // console.log(props)
 
-
+  // console.log(props.orderData.orderDetails)
 
    let orderData = props.orderData
-  
+   let UserProductDetails = props.orderData.orderDetails
+
+  //  console.log(props.orderData.orderDetails)
+
+  if (UserProductDetails === undefined) {
+    UserProductDetails = [
+      {
+          "name": "Shirts",
+          "value": {
+              "quantity": "5",
+              "wash": true,
+              "iron": false,
+              "towel": false,
+              "bleach": true,
+              "price": 150
+          }
+      },
+      {
+          "name": "T Shirts",
+          "value": {
+              "quantity": null,
+              "wash": false,
+              "iron": false,
+              "towel": false,
+              "bleach": false,
+              "price": 0
+          }
+      },
+      {
+          "name": "Trousers",
+          "value": {
+              "quantity": null,
+              "wash": false,
+              "iron": false,
+              "towel": false,
+              "bleach": false,
+              "price": 0
+          }
+      },
+      {
+          "name": "Jeans",
+          "value": {
+              "quantity": null,
+              "wash": false,
+              "iron": false,
+              "towel": false,
+              "bleach": false,
+              "price": 0
+          }
+      },
+      {
+          "name": "Boxers",
+          "value": {
+              "quantity": "5",
+              "wash": true,
+              "iron": false,
+              "towel": false,
+              "bleach": true,
+              "price": 150
+          }
+      },
+      {
+          "name": "Joggers",
+          "value": {
+              "quantity": null,
+              "wash": false,
+              "iron": false,
+              "towel": false,
+              "bleach": false,
+              "price": 0
+          }
+      },
+      {
+          "name": "Other",
+          "value": {
+              "quantity": "5",
+              "wash": false,
+              "iron": true,
+              "towel": true,
+              "bleach": false,
+              "price": 125
+          }
+      }
+  ]
+  }
+ 
+
+
 
   return (
 
     <>
-
     <Modal
       {...props}
       // aria-labelledby="contained-modal-title-vcenter"
@@ -62,21 +147,28 @@ const Summary = (props) => {
               <div>
               <table className="order-view-table">
                   <tbody>
-                      <tr style={{borderBottom: "1px solid #e9e9e9"}}>
-                          <th scope="row">Shirts</th>
-                          <td>Washing, ironing</td>
-                          <td>5 x 20 = 100</td>
+                      {
+                     UserProductDetails.map((item)=>{
+                        if(item.value.quantity>0){
+                            return(
+                            <>
+                            <tr>
+                          <th scope="row">{item.name}</th>
+                          {[
+                            item.value.wash ? "Washing" : "",
+                            item.value.iron ? "Ironing" : "",
+                            item.value.towel ? "DryWash" : "",
+                            item.value.bleach ? "Bleach" : "",
+                          ]
+                            .filter((x) => x.length > 0)
+                            .join(",")}
+                          <td>{item.value.price}</td>
                       </tr>
-                      <tr style={{borderBottom: "1px solid #e9e9e9"}}>
-                      <th scope="row">Jeans</th>
-                          <td>Washing, ironing</td>
-                          <td>5 x 30 = 150</td>
-                      </tr>
-                      <tr style={{borderBottom: "1px solid #e9e9e9"}}>
-                      <th scope="row">Joggers</th>
-                          <td>Chemical Wash</td>
-                          <td>1 x 100 = 200</td>
-                      </tr>
+                      </>
+                            )
+                          }
+                        }
+                     )}
                   </tbody>
                   
               </table>

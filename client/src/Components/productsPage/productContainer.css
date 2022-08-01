@@ -7,11 +7,11 @@
 
 .products-container-main {
     /* border: 1px solid black; */
-    width: 100%;
+    width: auto;
 }
-.ordersHeader {
-    /* border : 1px solid black */
-}
+/* .ordersHeader {
+    border : 1px solid black
+} */
 
 .product-listing {
    /* border : 1px solid rgb(251, 0, 255); */

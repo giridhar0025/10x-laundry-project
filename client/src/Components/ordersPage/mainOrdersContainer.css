@@ -152,12 +152,15 @@
     border-radius: 5px;
     overflow: hidden;
     border-spacing: 0px;
+    font-size: 15px;
 }
 
 thead {
     font-size: 12px;
    
 }
+
+
 
 .order-create-btn {
     /* border: 1px solid black; */

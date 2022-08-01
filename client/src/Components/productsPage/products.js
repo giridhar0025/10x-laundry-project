@@ -9,7 +9,7 @@ const Products = (props) => {
       <Navbar mainData={props.mainData}/>
     <div className="main-center-container">
        <Sidebar/>
-       <ProductsContainer/>
+       <ProductsContainer mainData={props.mainData}/>
     </div>
     <SmallFooter/>
  </>

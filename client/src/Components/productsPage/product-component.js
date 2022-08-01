@@ -9,21 +9,23 @@ import washingMachine from "./washing-machine.svg"
 import bleach1 from "./bleach -blue.svg"
 import bleachs from "./bleach.svg"
 
+
+
 const ProductComponent = (props) => {
 
+
+    // console.log(props)
     const [wash, setWash] = useState(false)
     const [bleach, setBleach] = useState(false)
     const [towel, setTowel] = useState(false)
     const [iron, setIron] = useState(false)
     const [quantity,setQuantity]=useState(null)
+
+
     const [prize,setPrize]=useState('-')
     const arr=props.washPrize
-
     // const [washprice,setwashprice]=useState(0)
-    
-
     const handleReset=()=>{
-        
         setIron(false)
         setBleach(false)
         setTowel(false)
@@ -31,40 +33,30 @@ const ProductComponent = (props) => {
         setWash(false)
         setQuantity('')
     }
-    
     const prizeCalculation=()=>{
         let cost=0
-        
-        
         if(wash){
             // console.log(quantity)
-            console.log("Entered in wash")
+            // console.log("Entered in wash")
             // console.log(arr[0][0])
-            
             cost+=(parseInt(quantity)*parseInt(arr[0][0]))
-           
         }
-      
         if(iron){
-            console.log("Entered in iron")
+            // console.log("Entered in iron")
             cost+=(quantity*parseInt(arr[0][1]))
-            
         }
         if(towel){
             // console.log(arr[0][3])
-            console.log("Entered in towel")
+            // console.log("Entered in towel")
             cost+=(quantity*parseInt(arr[0][2]))
-          
         }
         if(bleach){
             //  console.log(arr[0][3])
-            console.log("Entered in bleach")
+            // console.log("Entered in bleach")
             cost+=(parseInt(quantity)*parseInt(arr[0][3]))
-           
         }
-       
         setPrize(cost)
-        console.log(cost)
+        // console.log(cost)
     }
     useEffect(()=>{
           prizeCalculation()
@@ -75,41 +67,32 @@ const ProductComponent = (props) => {
                 wash:wash,
                 iron:iron,
                 towel:towel,
-                bleach:bleach
+                bleach:bleach,
+                price:prize
             },
-            quantity:quantity,
-            price:prize
           })
     })
     const handleWash = () => {
         setWash(!wash)
-        
         // prizeCalculation()
     }
     const handleBleach = () => {
         setBleach(!bleach)
-        // prizeCalculation()  
-        
+        // prizeCalculation()
     }
     const handleTowel = () => {
         setTowel(!towel)
         // prizeCalculation()
-        
     }
     const handleIron = () => {
         setIron(!iron)
         // prizeCalculation()
-        
     }
-
     const handleQuantity=(value)=>{
-        console.log(quantity)
+        // console.log(quantity)
         setQuantity(value)
-        
         // prizeCalculation()
-        
     }
-
     return (
         <>
             <tbody>
@@ -127,8 +110,7 @@ const ProductComponent = (props) => {
                         </td>
                         <td style={{width: "450px"}}>
                                                     <div className='washType-icons'>
-                                                    
-                                                     <img onClick={handleWash}  type="Boolean" name="wash" className="wash-icon" src={wash ?  washingMachine1 : washingMachine} alt=""/>  
+                                                     <img onClick={handleWash}  type="Boolean" name="wash" className="wash-icon" src={wash ?  washingMachine1 : washingMachine} alt=""/>
                                                         <img className="wash-icon" type="Boolean" name="iron" onClick={handleIron} src={iron ? iron1 :irons} alt=""/>
                                                         <img className="wash-icon" onClick={handleTowel} name="towel" type="Boolean" src={towel ? towel1 : towels} alt=""/>
                                                         <img className="wash-icon" onClick={handleBleach} name="bleach" type="Boolean" src={bleach ? bleach1 : bleachs} alt=""/>
@@ -141,10 +123,8 @@ const ProductComponent = (props) => {
                         <button className='product-reset' onClick={handleReset}>Reset</button>
                     </td>
                 </tr>
-                
             </tbody>
         </>
     )
 }
-
 export default ProductComponent

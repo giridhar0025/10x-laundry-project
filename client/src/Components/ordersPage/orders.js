@@ -7,14 +7,19 @@ import './orders.css'
 
 const Orders = (props) => {
 
-  
+  const handleReload = () => {
+    window.location.reload(false); 
+    handleReload();
+  }
+
+  // window.location.reload(false); 
   
   return (
     <>
         <Navbar mainData={props.mainData}/>
     <div className="center-container">
        <Sidebar/>
-       <MainOrdersContainer/>
+       <MainOrdersContainer mainData={props.mainData}/>
     </div>
     <SmallFooter/>
     </>
