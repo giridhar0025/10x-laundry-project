@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
 import './navbar.css'
 import {useNavigate} from "react-router-dom";
 const Navbar = (props) => {
@@ -8,7 +8,34 @@ const Navbar = (props) => {
     localStorage.setItem("authorization", "");
     navigate("/");
 }
-  const token = localStorage.getItem('authorization')
+const [mainData, setMainData] = useState([])
+
+  
+let token =
+localStorage.getItem("authorization")
+
+if(token === null) {
+  localStorage.setItem("authorization", "")
+} else{
+  token = token
+}
+
+
+
+
+useEffect(() => {
+  fetch("http://localhost:3001/user/details", {
+    headers: {
+      authorization: token,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      setMainData(data);
+    });
+    // window.location.reload(false); 
+}, [token]);
+  
   return (
     <>
      <div className="navbarContainer">

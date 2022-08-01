@@ -49,10 +49,11 @@ const ProductsContainer = (props) => {
     
 
     const handleDataSendProceed = () => {
-        // setordereddata(ordereddata)
-        // console.log(orderedDate)
+        setordereddata(orderedDate)
+        // console.log()
     }
 
+    // console.log(ordereddata)
 
 
 
@@ -102,7 +103,7 @@ const ProductsContainer = (props) => {
                     <div className="product-btns">
                         <button className='cancel-product'>Cancel</button>
                         {/* <div onClick={() => handleDataSendProceed()}>Proceed</div> */}
-                        <button onClick={() => setSummaryModal(true)} className='proceed-product'><div>Proceed</div></button>
+                        <button onClick={() => setSummaryModal(true)} className='proceed-product'><div onClick={handleDataSendProceed}>Proceed</div></button>
                         <OrderSummary ordereddata={ordereddata} userdetails={props.mainData} show={summaryModal} onHide={() => setSummaryModal(false)} />
                     </div>
                 </div>

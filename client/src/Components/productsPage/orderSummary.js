@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 const OrderSummary = (props) => {
 
 
-  // console.log(props)
+  console.log(props)
 
   const Navigate = useNavigate()
 
@@ -148,7 +148,7 @@ const handleCreateOrder = () => {
                             <>
                             <tr>
                           <th scope="row">{item.name}</th>
-                          {[
+                          <td>{[
                             item.value.wash ? "Washing" : "",
                             item.value.iron ? "Ironing" : "",
                             item.value.towel ? "DryWash" : "",
@@ -156,6 +156,7 @@ const handleCreateOrder = () => {
                           ]
                             .filter((x) => x.length > 0)
                             .join(",")}
+                            </td>
                           <td>{item.value.price}</td>
                       </tr>
                       </>
