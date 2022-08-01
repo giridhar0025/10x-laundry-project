@@ -33,7 +33,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res)=> {
-    console.log(req.body)
+    // console.log(req.body)
     userModel.find({email: req.body.user}).then((userData)=> {
         if(userData.length) {
             bcrypt.compare(req.body.password, userData[0].password).then((val)=> {
