@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 const OrderSummary = (props) => {
 
 
-  console.log(props.userDetails)
+  // console.log(props)
 
   const Navigate = useNavigate()
 
@@ -71,7 +71,7 @@ const handleCreateOrder = () => {
    fetch("http://localhost:3001/order/add", {
      method: "POST",
      body : JSON.stringify({
-          userEmail: props.userDetails.email,
+          userEmail: props.userdetails.email,
           orderId: RandomId,
           storeLocation: StoreLocationData.storeAddress,
           storeAddress: StoreLocationData.storeAddress,
@@ -81,7 +81,7 @@ const handleCreateOrder = () => {
           subTotal: subtotalNumber,
           pickupCharges: 50,
           TotalAmount: TotalPrice,
-          userAddress: props.userDetails.address,
+          userAddress: props.userdetails.address,
      }),
      headers : {
       authorization: token,
@@ -94,7 +94,7 @@ const handleCreateOrder = () => {
     console.log(err)
    })
    Navigate('/orders')
-   
+
 
 }
 
@@ -176,7 +176,7 @@ const handleCreateOrder = () => {
            <div className="order-summary-address-con">
             <span style={{fontSize:"16px", fontWeight:"bold", marginLeft:"20px", marginTop:"10px", display: 'block'}}>Address</span>
             <div className="Address-div">
-                <div>{props.userDetails.address}</div>
+                <div>{props.userdetails.address}</div>
             </div>
            </div>
            <div className="order-summary-bottom-div">

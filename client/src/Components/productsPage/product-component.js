@@ -8,6 +8,9 @@ import washingMachine1 from "./washing-machine-blue.svg"
 import washingMachine from "./washing-machine.svg"
 import bleach1 from "./bleach -blue.svg"
 import bleachs from "./bleach.svg"
+
+
+
 const ProductComponent = (props) => {
 
 
@@ -17,14 +20,6 @@ const ProductComponent = (props) => {
     const [towel, setTowel] = useState(false)
     const [iron, setIron] = useState(false)
     const [quantity,setQuantity]=useState(null)
-
-    
-
-
-
-
-
-
 
 
     const [prize,setPrize]=useState('-')

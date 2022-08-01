@@ -21,7 +21,7 @@
 
 
 .summary-container {
-    border: 1px solid rgb(255, 0, 0);
+    /* border: 1px solid rgb(255, 0, 0); */
     height: auto;
 }
 
@@ -103,10 +103,12 @@
 }
 
 .order-summary-bottom-div {
-    border: 1px solid rgb(21, 255, 0);
+    /* border: 1px solid rgb(21, 255, 0); */
     height: 90px;
     background-color: #F4F4F4;
     box-shadow: 0px -3px 6px #00000015;
+    display: flex;
+    align-items: center;
 }
 
 .order-view-table {

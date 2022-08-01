@@ -19,7 +19,7 @@ const Orders = (props) => {
         <Navbar mainData={props.mainData}/>
     <div className="center-container">
        <Sidebar/>
-       <MainOrdersContainer/>
+       <MainOrdersContainer mainData={props.mainData}/>
     </div>
     <SmallFooter/>
     </>

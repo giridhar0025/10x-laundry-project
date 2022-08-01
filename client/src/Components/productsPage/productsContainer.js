@@ -7,15 +7,12 @@ import OrderSummary from './orderSummary'
 
 const ProductsContainer = (props) => {
 
+
     const [summaryModal, setSummaryModal] = useState(false);
-
-    // const [makeOrder, setMakeOrder] = useState([]);
-
-    console.log(props.mainData)
-
     const [products, setProducts] = useState([])
     const [ordereddata, setordereddata] = useState([])
-let pricesArray=[]
+
+    let pricesArray = []
     useEffect(() => {
         fetch("http://localhost:3001/product", {
 
@@ -25,45 +22,39 @@ let pricesArray=[]
                 setProducts(data.data);
             });
     }, []);
-const handlePricesArr=()=>{
-    products.map((item)=>{
-        pricesArray.push(item.washType)
-        return{}
-    })
-    
+    const handlePricesArr = () => {
+        products.map((item) => {
+            pricesArray.push(item.washType)
+            return {}
+        })
 
-}
-handlePricesArr()
-const order = { orderId: "orderId", userId: "userId", details: new Map() };
-let orderedDate = [];
 
-const handleDataSend = (props) => {
-    order.details.set(props.name, props.value);
-    orderedDate = [...order.details].map(([name, value]) => ({
-      name,
-      value,
-    }));
+    }
+    handlePricesArr()
+    const order = { orderId: "orderId", userId: "userId", details: new Map() };
+    let orderedDate = [];
+
+    const handleDataSend = (props) => {
+        order.details.set(props.name, props.value);
+        orderedDate = [...order.details].map(([name, value]) => ({
+            name,
+            value,
+        }));
+        return ;
+    }
+    // console.log(orderedDate);
+
+  
    
-    // console.log("orderedData", orderedDate);
- 
     
-    return;
-}
 
-// useEffect(() => {
-//     setordereddata(orderedDate)
-// })
-
-
-const handleDataSendProceed=()=>{
-    setordereddata(orderedDate)
-// console.log(orderedDate)
-}
+    const handleDataSendProceed = () => {
+        // setordereddata(ordereddata)
+        // console.log(orderedDate)
+    }
 
 
-console.log(ordereddata)
 
- 
 
 
     return (
@@ -101,7 +92,7 @@ console.log(ordereddata)
 
                                 return (
                                     <>
-                                      <ProductComponent  description={item.productDescription} image={item.productImage} name={item.productName} washPrize={pricesArray} handleclick={handleDataSend}/> 
+                                        <ProductComponent description={item.productDescription} image={item.productImage} name={item.productName} washPrize={pricesArray} handleclick={handleDataSend} />
                                     </>
                                 )
                             })
@@ -109,10 +100,10 @@ console.log(ordereddata)
 
                     </table>
                     <div className="product-btns">
-                    <button className='cancel-product'>Cancel</button>
-                    {/* <div onClick={() => handleDataSendProceed()}>Proceed</div> */}
-                        <button  onClick={() => setSummaryModal(true)}  className='proceed-product'><div onClick={() => handleDataSendProceed()}>Proceed</div></button>
-                        <OrderSummary ordereddata={ordereddata} userDetails={props.mainData} show={summaryModal}  onHide={() => setSummaryModal(false)} />
+                        <button className='cancel-product'>Cancel</button>
+                        {/* <div onClick={() => handleDataSendProceed()}>Proceed</div> */}
+                        <button onClick={() => setSummaryModal(true)} className='proceed-product'><div>Proceed</div></button>
+                        <OrderSummary ordereddata={ordereddata} userdetails={props.mainData} show={summaryModal} onHide={() => setSummaryModal(false)} />
                     </div>
                 </div>
 
