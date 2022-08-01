@@ -1,6 +1,10 @@
 import React from 'react'
 import './Signupcontainer.css'
 import { useState } from "react";
+<<<<<<< HEAD
+// import axios from "axios";
+=======
+>>>>>>> 14c30eb54c4f49e00592fa281e8e91e117858324
 import { useNavigate } from 'react-router-dom';
 
 const SignUpContainer = () => {
