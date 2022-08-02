@@ -38,7 +38,7 @@ const MainOrdersContainer = (props) => {
 
 
   useEffect(() => {
-    fetch("http://localhost:3001/order", {
+    fetch("https://laundry--backend.herokuapp.com/order", {
       headers: {
         authorization: token,
       },

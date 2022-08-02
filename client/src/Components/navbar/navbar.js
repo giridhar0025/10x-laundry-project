@@ -24,7 +24,7 @@ if(token === null) {
 
 
 useEffect(() => {
-  fetch("http://localhost:3001/user/details", {
+  fetch("https://laundry--backend.herokuapp.com/user/details", {
     headers: {
       authorization: token,
     },

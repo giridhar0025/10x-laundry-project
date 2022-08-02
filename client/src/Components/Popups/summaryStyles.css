@@ -175,3 +175,7 @@
     padding : 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.order-summary-table{
+    margin-left: 33px;
+    margin-right: 49px;
+}

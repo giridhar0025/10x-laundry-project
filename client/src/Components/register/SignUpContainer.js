@@ -74,7 +74,7 @@ const SignUpContainer = () => {
         //     password,
         //     address
         // }))
-        fetch("http://localhost:3001/user/register", {
+        fetch("https://laundry--backend.herokuapp.com/user/register", {
             method: "post",
             body: JSON.stringify({
                 name,

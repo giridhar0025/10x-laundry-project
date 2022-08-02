@@ -68,7 +68,7 @@ const OrderMainDetails = {
 }
 
 const handleCreateOrder = () => {
-   fetch("http://localhost:3001/order/add", {
+   fetch("https://laundry--backend.herokuapp.com/order/add", {
      method: "POST",
      body : JSON.stringify({
           userEmail: props.userdetails.email,
